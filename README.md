@@ -33,3 +33,17 @@ User Authentication
     Sign up/login using email or OAuth.
 
     Only view/manage your own entries.
+
+Stack
+
+Frontend: React / Next.js + Tailwind CSS
+
+Backend: FastAPI / Flask (RESTful API)
+
+Database:	PostgreSQL or SQLite (dev mode)
+
+Auth: Supabase
+
+Charts: Chart.js or Recharts
+
+Hosting: Vercel (frontend) + Render / Railway (API)
