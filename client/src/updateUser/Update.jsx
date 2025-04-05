@@ -40,51 +40,66 @@ const UpdateUser = () => {
             console.log(error)
         })
     }
+    const formatDateForInput = (dateString) => {
+        if (!dateString) return '';
+        return new Date(dateString).toISOString().split('T')[0];
+      };
   return (
     <div className='addUser'>
         <Link to="/" type="button" class="btn btn-secondary">
             <i class="fa-solid fa-backward"></i> Back
         </Link>
-        <h3>Update User</h3>
+        <h3>Update Mood</h3>
         <form className='addUserForm' onSubmit={submitForm}>
+
             <div className='inputGroup'>
-                <label htmlFor='name'>Name:</label>
+                <label htmlFor='address'>Date:</label>
                 <input
-                type="text"
-                id="name"
-                value={user.name}
+                type="date"
+                id="address"
+                required="true"
+                value={formatDateForInput(user.address)}
                 onChange={inputHandler}
-                name="name"
+                name="address"
                 autoComplete='off'
-                placeholder='Enter your name'
+                placeholder='Date'
                 />
             </div>
 
             <div className='inputGroup'>
-                <label htmlFor='email'>Email:</label>
+                <label htmlFor='name'>Mood:</label>
+                <select
+                className='dropdown'
+                id="name"
+                required
+                onChange={inputHandler}
+                name="name"
+                value={user.name}
+                >
+                <option value="">Select your mood</option>
+                <option value="Awful">Awful</option>
+                <option value="Sad">Sad</option>
+                <option value="Neutral">Neutral</option>
+                <option value="Happy">Happy</option>
+                <option value="Joyful">Joyful</option>
+                </select>
+            </div>
+
+            <div className='inputGroup'>
+                <label htmlFor='email'>Comments:</label>
                 <input
-                type="email"
+                type="text"
                 id="email"
+                required="true"
                 value={user.email}
                 onChange={inputHandler}
                 name="email"
                 autoComplete='off'
-                placeholder='Enter your email'
+                placeholder='Anything extra?'
                 />
             </div>
 
-            <div className='inputGroup'>
-                <label htmlFor='address'>Address:</label>
-                <input
-                type="text"
-                id="address"
-                value={user.address}
-                onChange={inputHandler}
-                name="address"
-                autoComplete='off'
-                placeholder='Enter your address'
-                />
-            </div>
+            
 
             <div className='inputGroup'>
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
         required : true
     },
     address:{
-        type:String,
+        type:Date,
         required : true
     }
 })

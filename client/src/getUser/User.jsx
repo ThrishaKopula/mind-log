@@ -29,12 +29,17 @@ const User = () => {
             console.log(error);
         });
     }
+    const formatDateForInput = (dateString) => {
+        if (!dateString) return '';
+        return new Date(dateString).toISOString().split('T')[0];
+      };
+    const sortedUsers = [...users].sort((a, b) => new Date(a.address) - new Date(b.address));
 
   return (
     <div className='userTable'>
         <Link to="/add" type="button" class="btn btn-primary">
-            Add User 
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-circle-plus"></i> Add Mood   
+            
         </Link>
 
         {users.length === 0?(
@@ -46,21 +51,21 @@ const User = () => {
             <table className='table table-bordered'>
             <thead>
                 <tr>
-                    <th scope="col">S. No</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
+                    {/* <th scope="col">Index</th> */}
+                    <th scope="col">Date</th>
+                    <th scope="col">Mood</th>
+                    <th scope="col">Comments</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {users.map((user, index)=>{
+                {sortedUsers.map((user, index)=>{           
                    return (
                     <tr>
-                        <td>{index+1}</td>
+                        {/* <td>{index+1}</td> */}
+                        <td>{formatDateForInput(user.address)}</td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>
-                        <td>{user.address}</td>
                         <td className="actionButtons">
                             <Link to={`/update/`+user._id} type="button" class="btn btn-info">
                                 <i class="fa-solid fa-pen-to-square"></i>
