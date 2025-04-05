@@ -1,6 +1,6 @@
 import './App.css';
 import User from './getUser/User';
-import AddUser from './addUser/addUser';
+import AddUser from './addUser/AddUser';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 function App() {
