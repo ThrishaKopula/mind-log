@@ -1,0 +1,26 @@
+.titleContainer {
+    text-align: center;
+    margin: 20px;
+}
+
+.titleRow {
+display: flex;
+  justify-content: center; /* optional: to center horizontally */
+  align-items: center;     /* optional: to center vertically */
+  gap: 10px;
+}
+  
+.mainTitle {
+    font-size: 96px;
+    font-weight: bold;
+    color: #333;
+}
+  
+.subTitle {
+    font-size: 32px;
+    color: #777;
+}
+i.fa-spa {
+    font-size: 40px;
+  }
+  

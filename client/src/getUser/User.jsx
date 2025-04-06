@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./user.css"
+import Title from '../titlePage/Title';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -36,10 +37,9 @@ const User = () => {
     const sortedUsers = [...users].sort((a, b) => new Date(a.address) - new Date(b.address));
 
   return (
-    <div className='userTable'>
+        <div className='userTable'>
         <Link to="/add" type="button" class="btn btn-primary">
             <i class="fa-solid fa-circle-plus"></i> Add Mood   
-            
         </Link>
 
         {users.length === 0?(
@@ -62,7 +62,6 @@ const User = () => {
                 {sortedUsers.map((user, index)=>{           
                    return (
                     <tr>
-                        {/* <td>{index+1}</td> */}
                         <td>{formatDateForInput(user.address)}</td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>

@@ -13,8 +13,19 @@
 
 }
 
+.userTable h1{
+    text-align: center;
+
+}
+
+.userTable h3{
+    text-align: center;
+
+}
+
 .userTable table thead th{
     background-color: #FAEDCD;
+    text-align: center;
     /* color: whitesmoke; */
 }
 
