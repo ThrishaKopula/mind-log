@@ -90,7 +90,6 @@ const UpdateUser = () => {
                 <input
                 type="text"
                 id="email"
-                required="true"
                 value={user.email}
                 onChange={inputHandler}
                 name="email"

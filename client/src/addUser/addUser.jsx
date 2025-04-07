@@ -72,7 +72,6 @@ const AddUser = () => {
                 <input
                 type="text"
                 id="email"
-                required="true"
                 onChange={inputHandler}
                 name="email"
                 autoComplete='off'

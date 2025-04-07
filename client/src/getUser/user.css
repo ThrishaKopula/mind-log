@@ -1,7 +1,7 @@
 .userTable{
     width:60%;
     margin: 50px auto;
-    background-color: #E9EDC9;
+    background-color: rgba(0, 0, 0, 0.065);
     padding: 50px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
@@ -10,8 +10,10 @@
 .userTable table{
     width: 100%;
     margin-top: 30px;
-
+    border-radius: 10px;
+    overflow: hidden;
 }
+
 
 .userTable h1{
     text-align: center;
@@ -24,9 +26,8 @@
 }
 
 .userTable table thead th{
-    background-color: #FAEDCD;
+    background-color: #b4c5e4;
     text-align: center;
-    /* color: whitesmoke; */
 }
 
 .userTable table tbody td{
@@ -42,5 +43,4 @@
 .noData{
     margin-top: 20px;
     text-align: center;
-    /* background-color: #D4A373; */
 }

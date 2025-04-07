@@ -48,7 +48,7 @@ const User = () => {
                 <p>please add new user</p>
             </div>
         ):(
-            <table className='table table-bordered'>
+            <table className='table table-light table-hover'>
             <thead>
                 <tr>
                     {/* <th scope="col">Index</th> */}
@@ -66,13 +66,13 @@ const User = () => {
                         <td>{user.name}</td>
                         <td>{user.email}</td>
                         <td className="actionButtons">
-                            <Link to={`/update/`+user._id} type="button" class="btn btn-info">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                            <Link to={`/update/`+user._id} type="button" class="btn btn-primary">
+                                <i class="fa-solid fa-pen-to-square"></i> Update
                             </Link>
                             <button 
                             onClick={()=>deleteUser(user._id)}
                             type="button" class="btn btn-danger">
-                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-trash"></i> Delete
                             </button>
                             
                         </td>
