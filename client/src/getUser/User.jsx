@@ -45,7 +45,7 @@ const User = () => {
         {users.length === 0?(
             <div className='noData'>
                 <h3>No Data to display</h3>
-                <p>please add new user</p>
+                <p>Please add new entry</p>
             </div>
         ):(
             <table className='table table-light table-hover'>
@@ -64,7 +64,7 @@ const User = () => {
                     <tr>
                         <td>{formatDateForInput(user.address)}</td>
                         <td>{user.name}</td>
-                        <td>{user.email}</td>
+                        <td className="commentsCell">{user.email}</td>
                         <td className="actionButtons">
                             <Link to={`/update/`+user._id} type="button" class="btn btn-primary">
                                 <i class="fa-solid fa-pen-to-square"></i> Update

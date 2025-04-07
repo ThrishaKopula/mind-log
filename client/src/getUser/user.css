@@ -44,3 +44,10 @@
     margin-top: 20px;
     text-align: center;
 }
+
+.commentsCell {
+    max-width: 50ch; /* ch = character width unit */
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

@@ -4,12 +4,23 @@ import AddUser from './addUser/AddUser';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Update from './updateUser/Update';
 import Title from './titlePage/Title';
+import Signin from './Signin';
+import Signup from './Signup';
+import {AuthContextProvider} from "./AuthContext.jsx"
 
 function App() {
   const route = createBrowserRouter([
     {
       path:"/",
       element:<User/>,
+    },
+    {
+      path:"/signup",
+      element:<Signup/>,
+    },
+    {
+      path:"/signin",
+      element:<Signin/>,
     },
     {
       path:"/add",
@@ -23,7 +34,10 @@ function App() {
   return (
     <div className="App">
       <Title mainTitle="MindLog" subTitle="Track your mood daily and see your journey!" />
-      <RouterProvider router={route}></RouterProvider>
+      <AuthContextProvider>
+        <RouterProvider router={route}></RouterProvider>
+      </AuthContextProvider>
+      
     </div>
   );
 }

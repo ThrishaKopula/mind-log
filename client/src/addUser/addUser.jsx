@@ -25,9 +25,14 @@ const AddUser = () => {
             navigate("/");
         })
         .catch((error)=>{
-            console.log(error)
+            if (error.response && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message, { position: "top-right" });
+            } else {
+                toast.error("An unexpected error occurred.", { position: "top-right" });
+            }
         })
     }
+    const today = new Date().toISOString().split('T')[0];
   return (
     <div className='addUser'>
         <Link to="/" type="button" class="btn btn-secondary">
@@ -45,24 +50,25 @@ const AddUser = () => {
                 name="address"
                 autoComplete='off'
                 placeholder='Date'
+                max={today}
                 />
             </div>
 
             <div className='inputGroup'>
                 <label htmlFor='name'>Mood:</label>
                 <select
-                id="name"
-                required
-                onChange={inputHandler}
-                name="name"
-                value={user.name}
-                >
-                <option value="">Select your mood</option>
-                <option value="Awful">Awful</option>
-                <option value="Sad">Sad</option>
-                <option value="Neutral">Neutral</option>
-                <option value="Happy">Happy</option>
-                <option value="Joyful">Joyful</option>
+                    id="name"
+                    required
+                    onChange={inputHandler}
+                    name="name"
+                    value={user.name}
+                    >
+                    <option value="">Select your mood</option>
+                    <option value="Awful">Awful</option>
+                    <option value="Sad">Sad</option>
+                    <option value="Neutral">Neutral</option>
+                    <option value="Happy">Happy</option>
+                    <option value="Joyful">Joyful</option>
                 </select>
 
             </div>
