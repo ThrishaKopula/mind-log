@@ -8,7 +8,7 @@ const Signup = () => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState('')
 
-    const {session} = UserAuth();
+    const {session, signUpNewUser} = UserAuth();
     console.log(session);
   return (
     <div>
