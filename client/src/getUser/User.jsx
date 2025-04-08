@@ -52,8 +52,13 @@ const User = () => {
     }
   return (
         <div className='userTable'>
+            <div className='header'>
             <h2>Welcome, {session?.user?.email}</h2>
-            <p onClick={handleSignOut} className='btn btn-secondary'>Sign out</p>
+            <p onClick={handleSignOut} className='btn btn-secondary signOutBtn'>
+                Sign out <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </p>
+            </div>
+        
         <Link to="/add" type="button" class="btn btn-primary">
             <i class="fa-solid fa-circle-plus"></i> Add Mood   
         </Link>

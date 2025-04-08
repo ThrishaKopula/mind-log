@@ -5,6 +5,7 @@
     padding: 50px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+    position: relative;
 }
 
 .userTable table{
@@ -50,4 +51,25 @@
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.signOutBtn {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* Customize the color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.signOutBtn:hover {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker shade on hover */
 }
