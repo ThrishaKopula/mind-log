@@ -38,6 +38,7 @@ const Signup = () => {
                 {error && <p className='text-red-600 text-center pt-4'>{error}</p>}
             </div>
         </form>
+        
     </div>
   )
 }
