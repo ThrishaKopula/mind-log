@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from './AuthContext'
+import "./signup.css"
+import toast from 'react-hot-toast';
 const Signin = () => {
 
     const [email, setEmail] = useState('')
@@ -17,28 +19,39 @@ const Signin = () => {
       setLoading(true);
       try {
         const result = await signInUser(email, password);
+        console.log(result);
         if(result.success){
           navigate('/dashboard');
+        } else {
+          toast.error("Account not found.", { position: "top-right" });
         }
       } catch (err) {
         setError("an error occured");
+        console.log("errorrrr")
       } finally {
         setLoading(false);
       }
     }
   return (
-    <div>
-        <form onSubmit={handleSignIn} className='max-w-md m-auto pt-24'>
-            <h2 className='font-bold pb-2'>Sign In</h2>
-            <p>Don't have an acount? <Link to='/signup'>Sign Up</Link></p>
-            <div className='flex flex-col py-4'>
-                <input onChange={(e) => setEmail(e.target.value)} placeholder='email' className='p-3 mt-4' type="email"/>
-                <input onChange={(e) => setPassword(e.target.value)} placeholder='password' className='p-3 mt-4' type="password"/>
-                <button type='submit' disabled={loading} className='mt-6 w-full'>Sign In</button>
-                {error && <p className='text-red-600 text-center pt-4'>{error}</p>}
-            </div>
-        </form>
+    <div className="wrapper">
+      <h2>Sign In</h2>
+      <form  onSubmit={handleSignIn}>
+        <div className="input-box">
+          <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email" required/>
+        </div>
+        <div className="input-box">
+          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Create password" required/>
+        </div>
+        <div className="input-box button">
+          <button type="Submit" disabled={loading} value="Register Now">Sign In</button>
+        </div>
+        <div className="text">
+          <h3>Don't have an acount? <Link to='/signup'>Sign Up</Link></h3>
+        </div>
+        {error && <p className='text-red-600 text-center pt-4'>{error}</p>}
+      </form>
     </div>
+
   )
 }
 

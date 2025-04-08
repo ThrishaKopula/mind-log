@@ -11,6 +11,7 @@ const AddUser = () => {
         name:"",
         email:"",
         address:"",
+        
     };
     const [user, setUser] = useState(users);
     const navigate = useNavigate();

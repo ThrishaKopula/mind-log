@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from './AuthContext'
+import "./signup.css"
+import toast from 'react-hot-toast';
 const Signup = () => {
 
     const [email, setEmail] = useState('')
@@ -8,7 +10,7 @@ const Signup = () => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState('')
 
-    const {session, signUpNewUser} = UserAuth();
+    const {session, signUpNewUser, signInUser} = UserAuth();
     const navigate = useNavigate();
     // console.log("Session: ", session);
 
@@ -17,8 +19,14 @@ const Signup = () => {
       setLoading(true);
       try {
         const result = await signUpNewUser(email, password);
+        console.log(result.error);
         if(result.success){
+          await signInUser(email, password);
+          toast.success("Signed In!", {position:"top-right"});
           navigate('/dashboard');
+          console.log("in heree");
+        } else if (result.error==="Unable to validate email address: invalid format"){
+          toast.error("Invalid format.", { position: "top-right" });
         }
       } catch (err) {
         setError("an error occured");
@@ -27,19 +35,25 @@ const Signup = () => {
       }
     }
   return (
-    <div>
-        <form onSubmit={handleSignUp} className='max-w-md m-auto pt-24'>
-            <h2 className='font-bold pb-2'>SignUp</h2>
-            <p>Already have an acount? <Link to='/signin'>Sign In</Link></p>
-            <div className='flex flex-col py-4'>
-                <input onChange={(e) => setEmail(e.target.value)} placeholder='email' className='p-3 mt-4' type="email"/>
-                <input onChange={(e) => setPassword(e.target.value)} placeholder='password' className='p-3 mt-4' type="password"/>
-                <button type='submit' disabled={loading} className='mt-6 w-full'>Sign Up</button>
-                {error && <p className='text-red-600 text-center pt-4'>{error}</p>}
-            </div>
-        </form>
-        
-    </div>
+    <div className="wrapper">
+    <h2>Sign Up</h2>
+    <form  onSubmit={handleSignUp}>
+      <div className="input-box">
+        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email" required/>
+      </div>
+      <div className="input-box">
+        <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Create password" required/>
+      </div>
+      <div className="input-box button">
+        <button type="Submit" disabled={loading} value="Register Now">Register Now</button>
+      </div>
+      <div className="text">
+        {/* <h3>Already have an account? <a href="#">Sign In</a></h3> */}
+        <h3>Don't have an acount? <Link to='/signin'>Sign In</Link></h3>
+      </div>
+      {error && <h3 className='text-red-600 text-center pt-4'>{error}</h3>}
+    </form>
+  </div>
   )
 }
 
