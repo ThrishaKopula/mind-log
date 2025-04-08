@@ -7,10 +7,10 @@ export const AuthContextProvider = ({children}) => {
     const [session, setSession] = useState(undefined);
 
     //sign up
-    const signUpNewUser = async () => {
+    const signUpNewUser = async (email, password) => {
         const {data, error} = await supabase.auth.signUp({
-            email: 'example@email.com',
-            password: 'example-password',
+            email: email,
+            password: password,
         });
 
         if(error) {
@@ -20,6 +20,22 @@ export const AuthContextProvider = ({children}) => {
         return {success: true, data};
     };
 
+    const signInUser = async (email, password) => {
+        try {
+            const {data, error} = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            }) 
+            if (error){
+                console.error("sign in error occured: ", error);
+                return {success: false, error:error.message};
+            }
+            console.log("sign-in success: ", data);
+            return {success: true, data};
+        } catch (error) {
+            console.error("an error occured: ", error)
+        }
+    }
     useEffect(()=> {
         supabase.auth.getSession().then(({data: {session}}) => {
             setSession(session);
@@ -39,7 +55,7 @@ export const AuthContextProvider = ({children}) => {
 
     }
     return (
-        <AuthContext.Provider value={{session, signUpNewUser}}>
+        <AuthContext.Provider value={{session, signUpNewUser, signInUser, signOut}}>
             {children}
         </AuthContext.Provider>
     );

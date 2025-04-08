@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import "./user.css"
 import Title from '../titlePage/Title';
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { UserAuth } from '../AuthContext';
 
 const User = () => {
-    const [users, setUsers] = useState([])
+    const {session, signOut} = UserAuth();
+    const [users, setUsers] = useState([]);
+    
+    const navigate = useNavigate();
+    console.log("User Session: ", session?.user?.email);
     useEffect(()=> {
         const fetchData = async()=>{
             try {
@@ -36,11 +41,23 @@ const User = () => {
       };
     const sortedUsers = [...users].sort((a, b) => new Date(a.address) - new Date(b.address));
 
+    const handleSignOut = async (e) => {
+        e.preventDefault();
+        try {
+            await signOut();
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+        }
+    }
   return (
         <div className='userTable'>
+            <h2>Welcome, {session?.user?.email}</h2>
+            <p onClick={handleSignOut} className='btn btn-secondary'>Sign out</p>
         <Link to="/add" type="button" class="btn btn-primary">
             <i class="fa-solid fa-circle-plus"></i> Add Mood   
         </Link>
+        
 
         {users.length === 0?(
             <div className='noData'>

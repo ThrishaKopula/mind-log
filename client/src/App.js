@@ -7,12 +7,17 @@ import Title from './titlePage/Title';
 import Signin from './Signin';
 import Signup from './Signup';
 import {AuthContextProvider} from "./AuthContext.jsx"
+import PrivateRoute from './PrivateRoute.jsx';
 
 function App() {
   const route = createBrowserRouter([
     {
       path:"/",
-      element:<User/>,
+      element:<Signup/>,
+    },
+    {
+      path:"/dashboard",
+      element:<PrivateRoute><User/></PrivateRoute>,
     },
     {
       path:"/signup",

@@ -3,8 +3,10 @@ import "./addUser.css"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { UserAuth } from '../AuthContext';
 
 const AddUser = () => {
+    const {session, signOut} = UserAuth();
     const users = {
         name:"",
         email:"",
@@ -22,7 +24,7 @@ const AddUser = () => {
         await axios.post("http://localhost:8000/api/user", user)
         .then((response)=>{
             toast.success(response.data.message, {position:"top-right"});
-            navigate("/");
+            navigate("/dashboard");
         })
         .catch((error)=>{
             if (error.response && error.response.data && error.response.data.message) {
@@ -35,7 +37,7 @@ const AddUser = () => {
     const today = new Date().toISOString().split('T')[0];
   return (
     <div className='addUser'>
-        <Link to="/" type="button" class="btn btn-secondary">
+        <Link to="/dashboard" type="button" class="btn btn-secondary">
             <i class="fa-solid fa-backward"></i> Back
         </Link>
         <h3>How are you feeling?</h3>
@@ -58,7 +60,7 @@ const AddUser = () => {
                 <label htmlFor='name'>Mood:</label>
                 <select
                     id="name"
-                    required
+                    required="true"
                     onChange={inputHandler}
                     name="name"
                     value={user.name}
