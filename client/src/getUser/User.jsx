@@ -11,7 +11,6 @@ const User = () => {
     const [users, setUsers] = useState([]);
     
     const navigate = useNavigate();
-    console.log("User Session: ", session?.user?.email);
     useEffect(()=> {
         const fetchData = async()=>{
             try {
@@ -84,9 +83,9 @@ const User = () => {
                 {sortedUsers.map((user, index)=>{           
                    return (
                     <tr>
-                        <td>{formatDateForInput(user.address)}</td>
-                        <td>{user.name}</td>
-                        <td className="commentsCell">{user.email}</td>
+                        <td>{formatDateForInput(user.date)}</td>
+                        <td>{user.mood}</td>
+                        <td className="commentsCell">{user.comments}</td>
                         <td className="actionButtons">
                             <Link to={`/update/`+user._id} type="button" class="btn btn-primary">
                                 <i class="fa-solid fa-pen-to-square"></i> Update
@@ -101,11 +100,9 @@ const User = () => {
                     </tr>
                    );  
                 })}
-                
             </tbody>
         </table>
         )}
-        
     </div>
   )
 }

@@ -3,9 +3,9 @@ import User from "../model/userModel.js"
 export const create = async(req, res) => {
     try {
         const newUser = new User(req.body);
-        const {address} = newUser;
+        const {date} = newUser;
 
-        const userExist = await User.findOne({address});
+        const userExist = await User.findOne({date});
         if(userExist){
             return res.status(400).json({message: "Entry with specified date already exists."});
         }

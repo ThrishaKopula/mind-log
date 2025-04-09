@@ -8,9 +8,9 @@ import { UserAuth } from '../AuthContext';
 const AddUser = () => {
     const {session, signOut} = UserAuth();
     const users = {
-        name:"",
-        email:"",
-        address:"",
+        mood:"",
+        comments:"",
+        date:"",
         
     };
     const [user, setUser] = useState(users);
@@ -44,13 +44,13 @@ const AddUser = () => {
         <h3>How are you feeling?</h3>
         <form className='addUserForm' onSubmit={submitForm}>
             <div className='inputGroup'>
-                <label htmlFor='address'>Date:</label>
+                <label htmlFor='date'>Date:</label>
                 <input
                 type="date"
-                id="address"
+                id="date"
                 required="true"
                 onChange={inputHandler}
-                name="address"
+                name="date"
                 autoComplete='off'
                 placeholder='Date'
                 max={today}
@@ -58,13 +58,13 @@ const AddUser = () => {
             </div>
 
             <div className='inputGroup'>
-                <label htmlFor='name'>Mood:</label>
+                <label htmlFor='mood'>Mood:</label>
                 <select
-                    id="name"
+                    id="mood"
                     required="true"
                     onChange={inputHandler}
-                    name="name"
-                    value={user.name}
+                    name="mood"
+                    value={user.mood}
                     >
                     <option value="">Select your mood</option>
                     <option value="Awful">Awful</option>
@@ -77,12 +77,12 @@ const AddUser = () => {
             </div>
 
             <div className='inputGroup'>
-                <label htmlFor='email'>Comments:</label>
+                <label htmlFor='comments'>Comments:</label>
                 <input
                 type="text"
-                id="email"
+                id="comments"
                 onChange={inputHandler}
-                name="email"
+                name="comments"
                 autoComplete='off'
                 placeholder='Anything extra?'
                 />

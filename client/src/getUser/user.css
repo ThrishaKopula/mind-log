@@ -1,69 +1,64 @@
-.userTable{
-    width:60%;
+.userTable {
+    width: 80%; /* Use a percentage to make it responsive */
     margin: 50px auto;
     background-color: rgba(0, 0, 0, 0.065);
-    padding: 50px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
     position: relative;
+    max-width: 1200px;
 }
 
-.userTable table{
+.userTable table {
     width: 100%;
     margin-top: 30px;
     border-radius: 10px;
     overflow: hidden;
+    table-layout: auto;
+    /* border-spacing: 0; */
 }
 
-
-.userTable h1{
-    text-align: center;
-
-}
-
-.userTable h3{
-    text-align: center;
-
-}
-
-.userTable table thead th{
+.userTable table thead th {
     background-color: #b4c5e4;
     text-align: center;
+    padding: 10px;
 }
 
-.userTable table tbody td{
+.userTable table tbody td {
     padding: 10px;
     text-align: center;
     vertical-align: middle;
 }
 
-.actionButtons button{
-    margin: 0 10px;
+/* Make the table horizontally scrollable on small screens */
+.userTable table {
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
-.noData{
+/* Allow elements in table to break on smaller screens */
+.userTable table th, .userTable table td {
+    word-wrap: break-word;
+}
+
+.noData {
     margin-top: 20px;
     text-align: center;
 }
 
-.commentsCell {
-    max-width: 50ch; /* ch = character width unit */
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
+/* Make the user header section more responsive */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .signOutBtn {
     cursor: pointer;
     padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.4); /* Customize the color */
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
     border-radius: 5px;
@@ -71,5 +66,75 @@
 }
 
 .signOutBtn:hover {
-    background-color: rgba(0, 0, 0, 0.6); /* Darker shade on hover */
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Action buttons */
+.actionButtons {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 10px; /* Add space between buttons */
+}
+
+.actionButtons button {
+    /* padding: 10px 20px; */
+    /* font-size: 14px; */
+    width: auto; /* Ensure buttons are not stretched */
+}
+
+.commentsCell {
+    max-width: 50ch;
+    padding: 5px;
+    /* white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;  */
+}
+
+@media (max-width: 768px) {
+    .userTable {
+        width: 95%; /* Ensure the table is responsive on smaller screens */
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .userTable table {
+        font-size: 14px; /* Make text smaller on small screens */
+    }
+
+    .actionButtons {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: flex-start; /* Align the buttons to the left */
+        gap: 5px; /* Add space between buttons */
+    }
+    .commentsCell {
+        max-width: 40ch; /* Adjust the max-width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .signOutBtn {
+        width: 100%; /* Make sign out button full width on small screens */
+    }
+
+    .userTable {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    .noData h3 {
+        font-size: 16px; /* Make font size smaller for no data message */
+    }
+
+    .noData p {
+        font-size: 14px; /* Make the text smaller for no data message */
+    }
+    .commentsCell {
+        max-width: 20ch; /* Further adjust on very small screens */
+    }
+    /* .actionButtons button {
+        width: 100%; 
+        margin: 5px 0;
+    } */
 }

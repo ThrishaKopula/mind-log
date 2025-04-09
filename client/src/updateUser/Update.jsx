@@ -6,9 +6,9 @@ import toast from 'react-hot-toast';
 
 const UpdateUser = () => {
     const users = {
-        name:"",
-        email:"",
-        address:"",
+        mood:"",
+        comments:"",
+        date:"",
     };
     const [user, setUser] = useState(users);
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ const UpdateUser = () => {
         await axios.put(`http://localhost:8000/api/update/user/${id}`, user)
         .then((response)=>{
             toast.success(response.data.message, {position:"top-right"});
-            navigate("/");
+            navigate("/dashboard");
         })
         .catch((error)=>{
             console.log(error)
@@ -53,28 +53,28 @@ const UpdateUser = () => {
         <form className='addUserForm' onSubmit={submitForm}>
 
             <div className='inputGroup'>
-                <label htmlFor='address'>Date:</label>
+                <label htmlFor='date'>Date:</label>
                 <input
                 type="date"
-                id="address"
+                id="date"
                 required="true"
-                value={formatDateForInput(user.address)}
+                value={formatDateForInput(user.date)}
                 onChange={inputHandler}
-                name="address"
+                name="date"
                 autoComplete='off'
                 placeholder='Date'
                 />
             </div>
 
             <div className='inputGroup'>
-                <label htmlFor='name'>Mood:</label>
+                <label htmlFor='mood'>Mood:</label>
                 <select
                 className='dropdown'
-                id="name"
+                id="mood"
                 required
                 onChange={inputHandler}
-                name="name"
-                value={user.name}
+                name="mood"
+                value={user.mood}
                 >
                 <option value="">Select your mood</option>
                 <option value="Awful">Awful</option>
@@ -86,13 +86,13 @@ const UpdateUser = () => {
             </div>
 
             <div className='inputGroup'>
-                <label htmlFor='email'>Comments:</label>
+                <label htmlFor='comments'>Comments:</label>
                 <input
                 type="text"
-                id="email"
-                value={user.email}
+                id="comments"
+                value={user.comments}
                 onChange={inputHandler}
-                name="email"
+                name="comments"
                 autoComplete='off'
                 placeholder='Anything extra?'
                 />
