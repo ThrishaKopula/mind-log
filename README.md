@@ -2,48 +2,31 @@
  
 MindLog – Mood & Memory Tracker
 
-A full-stack application that allows users to:
+A full-stack application that allows users to log daily moods and journal entries.
 
-    Log daily moods and journal entries.
-
-    Tag entries with emotions, activities, or weather.
-
-    View trends over time (graphs, heatmaps).
-
-    Get AI-generated insights, affirmations, or suggestions based on mood history.
 
 Features (CRUD Operations)
 
 Mood Entries
 
-    Create: Add mood, activities, notes, journal entries.
+    Create: Add mood and comments.
 
-    Read: View past entries (list, calendar, or graph view).
+    Read: View past entries.
 
-    Update: Edit entries (e.g., correcting mood or adding a missed activity).
+    Update: Edit entries (e.g., correcting mood or comments).
 
     Delete: Remove entries.
 
-Emotion/Activity Tags
-
-    Users can manage custom tags for activities or emotional states.
-
 User Authentication
 
-    Sign up/login using email or OAuth.
-
-    Only view/manage your own entries.
+    Sign up/login using email.
 
 Stack
 
 Frontend: React / Next.js + Tailwind CSS
 
-Backend: FastAPI / Flask (RESTful API)
+Backend: Express.js
 
-Database:	PostgreSQL or SQLite (dev mode)
+Database:	MongoDB
 
 Auth: Supabase
-
-Charts: Chart.js or Recharts
-
-Hosting: Vercel (frontend) + Render / Railway (API)
