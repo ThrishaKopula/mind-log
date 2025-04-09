@@ -40,7 +40,7 @@ const Signin = () => {
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email" required/>
         </div>
         <div className="input-box">
-          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Create password" required/>
+          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" required/>
         </div>
         <div className="input-box button">
           <button type="Submit" disabled={loading} value="Register Now">Sign In</button>
