@@ -13,12 +13,13 @@ const User = () => {
     useEffect(()=> {
         const fetchData = async()=>{
             try {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`);
+                
+                // Filter users by the logged-in user's email
                 const email = session?.user?.email;
                 if (email) {
-                    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
-                        params: { email },
-                    });
-                setUsers(response.data);
+                    const filteredUsers = response.data.filter(user => user.email === email);
+                    setUsers(filteredUsers); // Set only the filtered users
                 }
             } catch (error) {
                 console.log("Error while fetching data", error);
