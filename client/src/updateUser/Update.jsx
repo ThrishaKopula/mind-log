@@ -20,7 +20,7 @@ const UpdateUser = () => {
     };
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/user/${id}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/${id}`)
         .then((response)=>{
             setUser(response.data);
         })
@@ -31,7 +31,7 @@ const UpdateUser = () => {
 
     const submitForm = async(e) => {
         e.preventDefault();
-        await axios.put(`http://localhost:8000/api/update/user/${id}`, user)
+        await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/update/user/${id}`, user)
         .then((response)=>{
             toast.success(response.data.message, {position:"top-right"});
             navigate("/dashboard");
