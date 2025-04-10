@@ -22,7 +22,7 @@ const AddUsers = () => {
 
     const submitForm = async(e) => {
         e.preventDefault();
-        await axios.post("${process.env.REACT_APP_BACKEND_URL}/api/user", user)
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user`, user)
         .then((response)=>{
             toast.success(response.data.message, {position:"top-right"});
             navigate("/dashboard");
