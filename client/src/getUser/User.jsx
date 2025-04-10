@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./user.css"
-import Title from '../titlePage/Title';
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
