@@ -13,8 +13,13 @@ const User = () => {
     useEffect(()=> {
         const fetchData = async()=>{
             try {
-                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`);
+                const email = session?.user?.email;
+                if (email) {
+                    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users`, {
+                        params: { email },
+                    });
                 setUsers(response.data);
+                }
             } catch (error) {
                 console.log("Error while fetching data", error);
             }

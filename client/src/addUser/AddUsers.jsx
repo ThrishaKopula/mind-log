@@ -11,7 +11,7 @@ const AddUsers = () => {
         mood:"",
         comments:"",
         date:"",
-        
+        email:session?.user?.email,
     };
     const [user, setUser] = useState(users);
     const navigate = useNavigate();

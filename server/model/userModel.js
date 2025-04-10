@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     date:{
         type:Date,
         required : true
+    },
+    email:{
+        type:String,
+        required:true
     }
 })
 

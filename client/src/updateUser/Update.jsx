@@ -3,12 +3,15 @@ import "./update.css"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { UserAuth } from '../AuthContext';
 
 const UpdateUser = () => {
+    const {session, signOut} = UserAuth();
     const users = {
         mood:"",
         comments:"",
         date:"",
+        email:session?.user?.email,
     };
     const [user, setUser] = useState(users);
     const navigate = useNavigate();
