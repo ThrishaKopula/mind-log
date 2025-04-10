@@ -8,7 +8,7 @@ import cors from "cors"
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'https://mindlog-ivory.vercel.app/',
+    origin: 'https://mindlog-ivory.vercel.app',
     credentials: true,
   }));
 dotenv.config();
