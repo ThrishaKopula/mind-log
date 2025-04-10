@@ -21,10 +21,20 @@ const Signup = () => {
         const result = await signUpNewUser(email, password);
         console.log(result.error);
         if(result.success){
-          await signInUser(email, password);
-          toast.success("Signed In!", {position:"top-right"});
-          navigate('/dashboard');
-          console.log("in heree");
+
+          const signInResult = await signInUser(email, password);
+          if (signInResult.error) {
+            toast.error("Sign-in failed: " + signInResult.error, { position: "top-right" });
+          } else {
+              toast.success("Signed In!", { position: "top-right" });
+              navigate('/dashboard');
+          }
+
+
+          // await signInUser(email, password);
+          // toast.success("Signed In!", {position:"top-right"});
+          // navigate('/dashboard');
+          // console.log("in heree");
         } else if (result.error==="Unable to validate email address: invalid format"){
           toast.error("Invalid format.", { position: "top-right" });
         }
