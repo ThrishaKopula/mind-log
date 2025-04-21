@@ -19,7 +19,6 @@ MindLog is a full-stack journaling application that helps users track their dail
 - Email-based sign up & login
 - Session management with secure access control
 
----
 
 ## Tech Stack
 
@@ -36,7 +35,6 @@ MindLog is a full-stack journaling application that helps users track their dail
 **Authentication:**  
 - [Supabase](https://supabase.com/) for user auth and session handling
   
----
 
 ## Try it out!
 
