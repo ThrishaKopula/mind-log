@@ -5,23 +5,23 @@ MindLog is a full-stack journaling application that helps users track their dail
 ![2](https://github.com/user-attachments/assets/faebf92e-b74b-44e5-80b5-1fa597f2d53a)
 
 
-## ✨ Features
+## Features
 
-### 📅 Mood Entries (Full CRUD)
+### Mood Entries (Full CRUD)
 
 - **Create:** Log a new mood with optional comments
 - **Read:** View a timeline of previous entries
 - **Update:** Edit mood or comments to reflect changes
 - **Delete:** Remove outdated or unwanted entries
 
-### 🔐 User Authentication
+### User Authentication
 
 - Email-based sign up & login
 - Session management with secure access control
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**  
 - [React](https://reactjs.org/) + [Next.js](https://nextjs.org/)  
